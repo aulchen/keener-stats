@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbm}
+
+
+\newenvironment{proof}{\paragraph{Proof:}}{\hfill$\square$}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\A}{\mathcal{A}}
+
+\author{Arthur Chen}
+\title{Chapter 1 Probability and Measure}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 2}
+
+For a set $B \subset \N = \{1, 2, \dots\}$, define
+
+\[
+\mu(B) = \lim_{n \rightarrow \infty} \frac{\#[B \cap \{1, \dots n \}]}{n}
+\]
+
+when the limit exists, and let $\A$ denote the collection of all such sets.
+
+\subsection*{Part b}
+
+If $A$ and $B$ are disjoint sets in $\A$, show that $\mu(A \cup B) = \mu(A) + \mu(B)$.
+
+By definition,
+
+\begin{align*}
+\mu(A \cup B) &= \lim_{n \rightarrow \infty} \frac{\#[(A \cup B) \cap \{1, \dots n \}]}{n} \\
+&= \lim_{n \rightarrow \infty} \left[ \frac{\#[A \cap \{1, \dots n \}]}{n} + \frac{\#[B \cap \{1, \dots n \}]}{n}
+\right] \\
+&= \lim_{n \rightarrow \infty} \frac{\#[A \cap \{1, \dots n \}]}{n} + \lim_{n \rightarrow \infty} \frac{\#[B \cap \{1, \dots n \}]}{n}
+\end{align*}
+
+assuming the limits are nice enough. The second line follows because $A$ and $B$ are disjoint.
+
+\subsection*{Part c}
+
+Is $\mu$ a measure? Explain your answer.
+
+No. A measure must satisfy countable additivity. Let $B_n$ be the singleton set $\{n\}$, and let $A = \cup_{n=1}^\infty B_n = \N$. It's clear that $\mu(B_n) = 0$. Then
+
+\[
+\mu(\cup_{n=1}^\infty B_n) = \mu(\N) = 1
+\]
+
+but
+
+\[
+\sum_{n=1}^\infty \mu(B_n) = 0
+\]
+
+and thus $\mu$ does not have countable additivity.
+
+\end{document}
